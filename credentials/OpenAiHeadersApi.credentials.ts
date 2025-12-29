@@ -7,10 +7,10 @@ import type {
 	INodeProperties,
 } from 'n8n-workflow';
 
-export class OpenAiApi implements ICredentialType {
-	name = 'openAiApi';
+export class OpenAiHeadersApi implements ICredentialType {
+	name = 'openAiHeadersApi';
 
-	displayName = 'OpenAi API';
+	displayName = 'OpenAi Headers API';
 
 	icon: Icon = { light: 'file:../icons/openAi.svg', dark: 'file:../icons/openAi.dark.svg' };
 
@@ -104,7 +104,12 @@ export class OpenAiApi implements ICredentialType {
 
 		// Log header names only to verify injection without leaking secrets.
 		const headerNames = Object.keys(requestOptions.headers);
-		console.debug('[OpenAiApi.authenticate] baseURL=%s url=%s headers=%o', requestOptions.baseURL, requestOptions.url, headerNames);
+		console.debug(
+			'[OpenAiHeadersApi.authenticate] baseURL=%s url=%s headers=%o',
+			requestOptions.baseURL,
+			requestOptions.url,
+			headerNames,
+		);
 
 		return requestOptions;
 	}
