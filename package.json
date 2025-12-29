@@ -1,0 +1,54 @@
+{
+	"name": "n8n-node-openai-multiheader",
+	"version": "1.0.0",
+	"description": "openai with multiheader",
+	"license": "MIT",
+	"homepage": "",
+	"keywords": [
+		"n8n-community-node-package"
+	],
+	"author": {
+		"name": "cs686"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/cs68614-hash/n8n-node-openai-multiheader.git"
+	},
+	"scripts": {
+		"build": "n8n-node build",
+		"build:watch": "tsc --watch",
+		"dev": "n8n-node dev",
+		"lint": "n8n-node lint",
+		"lint:fix": "n8n-node lint --fix",
+		"release": "n8n-node release",
+		"prepublishOnly": "n8n-node prerelease"
+	},
+	"files": [
+		"dist"
+	],
+	"n8n": {
+		"n8nNodesApiVersion": 1,
+		"strict": true,
+		"credentials": [
+			"dist/credentials/OpenAiApi.credentials.js",
+			"dist/credentials/GithubIssuesApi.credentials.js",
+			"dist/credentials/GithubIssuesOAuth2Api.credentials.js"
+		],
+		"nodes": [
+			"dist/nodes/OpenAi/OpenAi.node.js",
+			"dist/nodes/GithubIssues/GithubIssues.node.js",
+			"dist/nodes/Example/Example.node.js"
+		]
+	},
+	"devDependencies": {
+		"@n8n/node-cli": "*",
+		"@types/node": "^25.0.3",
+		"eslint": "9.32.0",
+		"prettier": "3.6.2",
+		"release-it": "^19.0.4",
+		"typescript": "5.9.2"
+	},
+	"peerDependencies": {
+		"n8n-workflow": "*"
+	}
+}
