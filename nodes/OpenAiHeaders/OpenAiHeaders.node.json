@@ -1,8 +1,8 @@
 {
-	"node": "n8n-nodes-openai-multiheader",
+	"node": "n8n-nodes-openai-multiheader.openAiHeaders",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
-	"categories": ["Utility"],
+	"categories": ["AI", "Language Models"],
 	"resources": {
 		"credentialDocumentation": [
 			{
@@ -15,5 +15,5 @@
 			}
 		]
 	},
-	"alias": ["ChatGPT", "DallE"]
+	"alias": ["ChatGPT", "DallE", "Language Model"]
 }
