@@ -1,6 +1,6 @@
 {
 	"name": "n8n-nodes-openai-multiheader",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"description": "openai with multiheader",
 	"license": "MIT",
 	"homepage": "",
