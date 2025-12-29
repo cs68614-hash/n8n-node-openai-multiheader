@@ -69,48 +69,10 @@ const createOperations: INodeProperties[] = [
 	{
 		displayName: 'Model',
 		name: 'model',
-		type: 'options',
+		type: 'string',
 		default: '',
 		description: 'The model to use for image generation',
-		typeOptions: {
-			loadOptions: {
-				routing: {
-					request: {
-						method: 'GET',
-						url: '/v1/models',
-					},
-					output: {
-						postReceive: [
-							{
-								type: 'rootProperty',
-								properties: {
-									property: 'data',
-								},
-							},
-							{
-								type: 'filter',
-								properties: {
-									pass: "={{ $responseItem.id.startsWith('dall-') }}",
-								},
-							},
-							{
-								type: 'setKeyValue',
-								properties: {
-									name: '={{$responseItem.id}}',
-									value: '={{$responseItem.id}}',
-								},
-							},
-							{
-								type: 'sort',
-								properties: {
-									key: 'name',
-								},
-							},
-						],
-					},
-				},
-			},
-		},
+		placeholder: 'e.g. dall-e-3',
 		displayOptions: {
 			show: {
 				resource: ['image'],
@@ -128,48 +90,10 @@ const createOperations: INodeProperties[] = [
 	{
 		displayName: 'Model',
 		name: 'imageModel',
-		type: 'options',
+		type: 'string',
 		default: '',
 		description: 'The model to use for image generation',
-		typeOptions: {
-			loadOptions: {
-				routing: {
-					request: {
-						method: 'GET',
-						url: '/v1/models',
-					},
-					output: {
-						postReceive: [
-							{
-								type: 'rootProperty',
-								properties: {
-									property: 'data',
-								},
-							},
-							{
-								type: 'filter',
-								properties: {
-									pass: "={{ $responseItem.id.startsWith('dall-') }}",
-								},
-							},
-							{
-								type: 'setKeyValue',
-								properties: {
-									name: '={{$responseItem.id}}',
-									value: '={{$responseItem.id}}',
-								},
-							},
-							{
-								type: 'sort',
-								properties: {
-									key: 'name',
-								},
-							},
-						],
-					},
-				},
-			},
-		},
+		placeholder: 'e.g. dall-e-3',
 		displayOptions: {
 			show: {
 				resource: ['image'],

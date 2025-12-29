@@ -36,7 +36,7 @@ const completeOperations: INodeProperties[] = [
 	{
 		displayName: 'Model',
 		name: 'model',
-		type: 'options',
+		type: 'string',
 		description:
 			'The model which will generate the completion. <a href="https://beta.openai.com/docs/models/overview">Learn more</a>.',
 		displayOptions: {
@@ -46,45 +46,7 @@ const completeOperations: INodeProperties[] = [
 				'@version': [1],
 			},
 		},
-		typeOptions: {
-			loadOptions: {
-				routing: {
-					request: {
-						method: 'GET',
-						url: '/v1/models',
-					},
-					output: {
-						postReceive: [
-							{
-								type: 'rootProperty',
-								properties: {
-									property: 'data',
-								},
-							},
-							{
-								type: 'filter',
-								properties: {
-									pass: "={{ $responseItem.id.startsWith('gpt-') && !$responseItem.id.startsWith('gpt-4-vision') }}",
-								},
-							},
-							{
-								type: 'setKeyValue',
-								properties: {
-									name: '={{$responseItem.id}}',
-									value: '={{$responseItem.id}}',
-								},
-							},
-							{
-								type: 'sort',
-								properties: {
-									key: 'name',
-								},
-							},
-						],
-					},
-				},
-			},
-		},
+		placeholder: 'e.g. gpt-4o-mini',
 		routing: {
 			send: {
 				type: 'body',
@@ -96,7 +58,7 @@ const completeOperations: INodeProperties[] = [
 	{
 		displayName: 'Model',
 		name: 'chatModel',
-		type: 'options',
+		type: 'string',
 		description:
 			'The model which will generate the completion. <a href="https://beta.openai.com/docs/models/overview">Learn more</a>.',
 		displayOptions: {
@@ -108,45 +70,7 @@ const completeOperations: INodeProperties[] = [
 				'@version': [1],
 			},
 		},
-		typeOptions: {
-			loadOptions: {
-				routing: {
-					request: {
-						method: 'GET',
-						url: '/v1/models',
-					},
-					output: {
-						postReceive: [
-							{
-								type: 'rootProperty',
-								properties: {
-									property: 'data',
-								},
-							},
-							{
-								type: 'filter',
-								properties: {
-									pass: "={{ $responseItem.id.startsWith('gpt-') && !$responseItem.id.startsWith('gpt-4-vision') }}",
-								},
-							},
-							{
-								type: 'setKeyValue',
-								properties: {
-									name: '={{$responseItem.id}}',
-									value: '={{$responseItem.id}}',
-								},
-							},
-							{
-								type: 'sort',
-								properties: {
-									key: 'name',
-								},
-							},
-						],
-					},
-				},
-			},
-		},
+		placeholder: 'e.g. gpt-4o-mini',
 		routing: {
 			send: {
 				type: 'body',

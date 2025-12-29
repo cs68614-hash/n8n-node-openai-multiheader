@@ -62,7 +62,7 @@ const completeOperations: INodeProperties[] = [
 	{
 		displayName: 'Model',
 		name: 'model',
-		type: 'options',
+		type: 'string',
 		description:
 			'The model which will generate the completion. <a href="https://beta.openai.com/docs/models/overview">Learn more</a>.',
 		displayOptions: {
@@ -71,45 +71,7 @@ const completeOperations: INodeProperties[] = [
 				resource: ['text'],
 			},
 		},
-		typeOptions: {
-			loadOptions: {
-				routing: {
-					request: {
-						method: 'GET',
-						url: '/v1/models',
-					},
-					output: {
-						postReceive: [
-							{
-								type: 'rootProperty',
-								properties: {
-									property: 'data',
-								},
-							},
-							{
-								type: 'filter',
-								properties: {
-									pass: "={{ !$responseItem.id.startsWith('audio-') && ($responseItem.id === 'gpt-3.5-turbo-instruct' || !$responseItem.id.startsWith('gpt-') ) && !$responseItem.id.startsWith('dall-') && !$responseItem.id.startsWith('tts-') && !$responseItem.id.startsWith('whisper-') && !['cushman:2020-05-03', 'davinci-if:3.0.0', 'davinci-instruct-beta:2.0.0', 'if'].includes($responseItem.id) && !$responseItem.id.includes('-edit-') && !$responseItem.id.endsWith(':001') }}",
-								},
-							},
-							{
-								type: 'setKeyValue',
-								properties: {
-									name: '={{$responseItem.id}}',
-									value: '={{$responseItem.id}}',
-								},
-							},
-							{
-								type: 'sort',
-								properties: {
-									key: 'name',
-								},
-							},
-						],
-					},
-				},
-			},
-		},
+		placeholder: 'e.g. gpt-3.5-turbo-instruct',
 		routing: {
 			send: {
 				type: 'body',
@@ -147,7 +109,7 @@ const editOperations: INodeProperties[] = [
 	{
 		displayName: 'Model',
 		name: 'model',
-		type: 'options',
+		type: 'string',
 		description:
 			'The model which will generate the edited version. <a href="https://beta.openai.com/docs/models/overview">Learn more</a>.',
 		displayOptions: {
@@ -156,23 +118,14 @@ const editOperations: INodeProperties[] = [
 				resource: ['text'],
 			},
 		},
-		options: [
-			{
-				name: 'code-davinci-edit-001',
-				value: 'code-davinci-edit-001',
-			},
-			{
-				name: 'text-davinci-edit-001',
-				value: 'text-davinci-edit-001',
-			},
-		],
+		placeholder: 'e.g. text-davinci-edit-001',
 		routing: {
 			send: {
 				type: 'body',
 				property: 'model',
 			},
 		},
-		default: 'text-davinci-edit-001',
+		default: '',
 	},
 	{
 		displayName: 'Input',
@@ -220,7 +173,7 @@ const moderateOperations: INodeProperties[] = [
 	{
 		displayName: 'Model',
 		name: 'model',
-		type: 'options',
+		type: 'string',
 		description:
 			'The model which will classify the text. <a href="https://beta.openai.com/docs/models/overview">Learn more</a>.',
 		displayOptions: {
@@ -229,23 +182,14 @@ const moderateOperations: INodeProperties[] = [
 				operation: ['moderate'],
 			},
 		},
-		options: [
-			{
-				name: 'text-moderation-stable',
-				value: 'text-moderation-stable',
-			},
-			{
-				name: 'text-moderation-latest',
-				value: 'text-moderation-latest',
-			},
-		],
+		placeholder: 'e.g. text-moderation-latest',
 		routing: {
 			send: {
 				type: 'body',
 				property: 'model',
 			},
 		},
-		default: 'text-moderation-latest',
+		default: '',
 	},
 	{
 		displayName: 'Input',
