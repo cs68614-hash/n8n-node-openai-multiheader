@@ -102,6 +102,10 @@ export class OpenAiApi implements ICredentialType {
 		requestOptions.headers['Authorization'] = `Bearer ${credentials.apiKey}`;
 		requestOptions.headers['OpenAI-Organization'] = credentials.organizationId;
 
+		// Log header names only to verify injection without leaking secrets.
+		const headerNames = Object.keys(requestOptions.headers);
+		console.debug('[OpenAiApi.authenticate] baseURL=%s url=%s headers=%o', requestOptions.baseURL, requestOptions.url, headerNames);
+
 		return requestOptions;
 	}
 }
