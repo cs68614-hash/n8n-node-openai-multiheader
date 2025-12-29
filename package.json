@@ -12,7 +12,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/cs68614-hash/n8n-node-openai-multiheader.git"
+		"url": "git+https://github.com/cs68614-hash/n8n-node-openai-multiheader.git"
 	},
 	"scripts": {
 		"build": "n8n-node build",
